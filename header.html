@@ -1,0 +1,91 @@
+﻿<div id="loginform">
+    <div class="login-body">
+        <div ><img class="center" src="libs/img/signin.jpg" width="30%"><p class="center">Sign In</p></div>
+            <div class="login-content">
+                <span class="login-close" onclick="toggleShow('#userlog')">&times;</span>
+
+                    <form action="" method="post" onsubmit="return logIn()">
+                        <input class="form" type="email" name="userid" id="userid" placeholder="Email" required> 
+                        <input class="form" type="password" name="userpassword" id="userpassword" placeholder="Password" required>
+                            <div class="login-footer">
+                                <button class="full" type="submit"><i class="fa fa-user-circle-o"></i>Log In</button>
+                                <button class="full" type="reset" onClick="popupShow('#account', 'account','header.html #signupform')"><i class="fa fa-user-plus"></i>Sign Up</button>
+                                <p class="right"><a href="#" onClick="popupShow('#account', 'account','header.html #forgetpassword')">Forget password?</a></p>
+                            </div>
+                    </form>
+                    <div id="login_result"> </div>
+            </div>
+    </div>
+</div>
+
+<div id="forgetpassword">
+    <div class="login-body">
+        <div ><img class="center" src="libs/img/signin.jpg" width="30%"><p class="center">Password Reset</p></div>
+            <div class="login-content">
+                <span class="login-close" onclick="$('#account').load('header.html #loginform')">&times;</span>
+
+                    <form action="" method="post" onsubmit="return passRecovery()">
+                        <input class="form" type="email" name="userid" id="userid" placeholder="Email" required> 
+                            <div class="login-footer">
+                                <button class="full" type="submit"><i class="fa fa-user-circle-o"></i>Submit</button>
+                            </div>
+                    </form>
+                    <div id="login_result"> </div>
+            </div>
+    </div>
+</div>
+
+<div id="signupform">
+    <div class="login-body">
+        <div><img class="center" src="libs/img/signup.jpg" width="30%"><p class="center">Sign Up</p></div>
+            <div class="login-content">
+                    <span class="login-close" onclick="$('#account').load('header.html #loginform');">&times;</span>
+                    <form id="sign_up" action="" method="post" onsubmit = "return signUp()">
+                        <input class="form" type="text" name="Fullname" id="Fullname" placeholder="Full name" required>
+                        <input class="form" type="text" name="Phone" id="Phone" placeholder="Mobile phone" required>
+                        <input class="form" type="text" name="Myclass" id="Myclass" placeholder="Form/class" required>                                
+                        <input class="form" type="email" name="Userid" id="Userid" placeholder="Email" required>
+                        <input class="form" type="password" name="Userpassword" id="Userpassword" placeholder="Password" required>
+                        <input class="form" type="password" name="retypePass" id="retypePass" placeholder="Re-type password" required>
+                        <div class="login-footer">
+                            <button class="full" type="submit">Register</button>
+                            <button class="full" type="reset" onclick="$('#account').load('header.html #loginform');">Cancel</button>
+                        </div>
+                    </form>	
+                    <div id="sign_up_result"></div>                        
+            </div>
+    </div>
+</div>
+
+<div id="signupconfirm" class="modal">
+    <div class="modal-content">
+        <div class="modal-header"><span class="close" onclick="toggleShow('#aboutModal')">&times;</span><h1>Sign Up Confirmation</h1></div>
+            <div class="modal-body">
+                    <p>Thank you for registration. An e-mail has been sent to you, please check and click on the link provided to activate your account.</p>    
+            </div>
+            <div class="modal-footer"><h3>Andy Dang - BIS class of 2022</h3></div>    
+    </div>
+</div>
+
+<div id="resetPass" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><span class="close" onclick="toggleShow('#aboutModal')">&times;</span><h1>Password Reset</h1></div>
+                <div class="modal-body">
+                    <p>An e-mail has been sent to you, please check and click on the link provided to reset your password.</p>
+                </div>
+            <div class="modal-footer"><h3>Andy Dang - BIS class of 2022</h3></div>    
+        </div>
+</div>
+
+<div id="aboutme" class="modal">
+    <div class="modal-content">
+        <div class="modal-header"><span class="close" onclick="toggleShow('#aboutModal')">&times;</span><h1>About</h1></div>
+        <div class="modal-body">
+            <p>This website is being designed and developed for my personal project, it uses for my study purpose only. A part of figures from my survey, images, photos, facts may be copied from internet.
+            For feedback or contact, please reach me by email (adang3@bisvietnam.net) <br><br>
+            Disclaimer: For the purpose of giving a hands to support community, this platform will help the caters to prepare food materials enough upon order placed. By placing 
+            order on this system, <strong>YOU AGREED</strong> to pay full price for 80% of food as normal. The saving of 20% will be funding for charity projects. I look forward to your kind support. <br><br></p>
+        </div>
+        <div class="modal-footer"><h3>Andy Dang - BIS class of 2022</h3></div>
+    </div>
+</div>

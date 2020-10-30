@@ -1,0 +1,16 @@
+{  
+    "chartData": [
+    {"month": "Jan", "weight": [7,7,8,7,9,7]},
+    {"month": "Feb", "weight": [8,8,8,7,9,7]},
+    {"month": "Mar", "weight": [10,7,8,7,6,7]},
+    {"month": "Apr", "weight": [10,7,8,7,9,7]},
+    {"month": "May", "weight": [9,8,7,7,8,7]},
+    {"month": "Jun", "weight": [8,9,8,7,6,7]},
+    {"month": "Jul", "weight": [7,6,8,7,9,8]},
+    {"month": "Aug", "weight": [10,7,8,7,9,7]},
+    {"month": "Sep", "weight": [9,8,7,7,8,7]},
+    {"month": "Oct", "weight": [8,9,8,7,6,7]},
+    {"month": "Nov", "weight": [7,6,8,7,9,8]}
+    ],
+    "average_pre_year": 8.5
+}

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Maven Pro' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Armata' rel='stylesheet'>    
+    <script src="libs/chart.js"></script>
+    <script src="libs/jquery.js"></script>
+    <link rel="stylesheet" href="libs/main.css">    
+</head>
+<body>
+    
+<div class="container">
+        <img class="center" src="libs/img/logo.jpg" >
+        <div class="menubar" id="nav_bar">
+            <div class="menu-item">
+                <a href="#" onclick = "loadmenu()"><i class="fa fa-home fa-fw"></i>Home</a>
+                <a href="#" onClick = "popupShow('#main','main','aboutfoodwaste.html #aboutfoodwaste')"><i class="fa fa-briefcase"></i>Foodwaste</a>
+                <a href="#" onClick = "popupShow('#main','main','myproject.html #myproject')"><i class="fa fa-heart" ></i>My Community Project</a>
+                <a href="#" onclick = "popupShow('#aboutModal','aboutModal','header.html #aboutme')"><i class="fa fa-user"></i>About</a>               
+                <div style="float: right;"> <a href="#" onClick="toggleShow('#userlog')"><i class="fa fa-user"></i>Account</a></div>
+            </div>
+        </div>
+
+        <div class="mobileMenu"> <a href="javascript:void(0);" onclick="toggleShow('#myLinks')"><i class="fa fa-bars"></i>MENU</a></div>
+            <div class="mobile-menu-items" id="myLinks">
+                <span class="close" onclick="toggleShow('#myLinks');">&times;</span>
+                <a href="#" onclick="loadmenu(); toggleShow('#myLinks');"><i class="fa fa-home fa-fw"></i>Home</a>
+                <a href="#" onClick="toggleShow('#myLinks'); popupShow('#main','main','aboutfoodwaste.html #aboutfoodwaste')" ><i class="fa fa-briefcase"></i>Foodwaste</a>
+                <a href="#" onClick="toggleShow('#myLinks'); popupShow('#main','main','myproject.html #myproject')" ><i class="fa fa-heart"></i>My project</a>
+                <a href="#" onClick="toggleShow('#myLinks'); popupShow('#aboutModal','aboutModal','header.html #aboutme')"><i class="fa fa-user"></i>About</a>
+                <a href="#" onClick="toggleShow('#myLinks'); toggleShow('#userlog')"><i class="fa fa-user"></i>Account</a>
+            </div>
+
+        <div class="login-modal" id="userupdate">
+            <div class="login-window fade" id="userinfoupdate">
+                <div class="login-body">
+                    <div><img class="center" src="libs/img/signup.jpg" width="30%"><p class="center">Account Setting</p></div>
+                        <div class="login-content">
+                                <span class="login-close" onclick="toggleShow('#userupdate');">&times;</span>
+                                <form id="userchange" action="" method="post" onsubmit = "return confirmChange()">
+                                    <input class="form" type="text" name="Fullname" id="name" placeholder="Full name" required>
+                                    <input class="form" type="text" name="Phone" id="phone" placeholder="Mobile phone" required>
+                                    <input class="form" type="text" name="Myclass" id="form" placeholder="Form/class" required>                                
+                                    <input class="form" type="email" disabled name="useremail" id="useremail" placeholder="Email">
+                                    <input class="form" type="password" name="Userpassword" id="password" placeholder="Password" required>
+                                    <input class="form" type="password" name="retypePass" id="retypePass" placeholder="Re-type password" required>
+                                    <input class="form" type="hidden" id="activePass" placeholder="active password">
+                                    <div class="login-footer">
+                                        <button class="full" type="submit">Confirm Change</button>
+                                        <button class="full" type="reset" onclick="toggleShow('#userupdate');">Cancel</button>
+                                    </div>
+                                </form>	
+                                <div id="change_result"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+                
+        <div id="reviews" class="login-modal"><div class="consumer-reviews">
+            <span style="float: right; font-size: 28px; font-weight: bold; margin-right: 5px; cursor: pointer;" onclick="toggleShow('#reviews');">&times;</span>
+                <h1>Consumers reviews & ratings</h1>
+            <div class="col-2">
+                <div>
+                    <ul>
+                        <li><a href="#" onclick="toggleShow('#facts')">Nutrition facts</a></li>
+                            <div id="facts">Nutrition facts here</div>
+                        <li><a href="#" onclick="toggleShow('#consumerreview')">Consumer reviews</a></li>
+                            <div id="consumerreview">Consumer reviews here</div>
+                        <li><a href="#" onclick="toggleShow('#myrate')">Write reviews & rating</a></li>
+                    </ul>                           
+                                <div id="myrate" class="headlines"><div class="items">Your rating</div>
+                                    <div class="rating">
+                                            <span id="5" class="fa" onclick="voteRatings(this.id)">&#xf006;</span>
+                                            <span id="4" class="fa" onclick="voteRatings(this.id)">&#xf006;</span>
+                                            <span id="3" class="fa" onclick="voteRatings(this.id)">&#xf006;</span>
+                                            <span id="2" class="fa" onclick="voteRatings(this.id)">&#xf006;</span>
+                                            <span id="1" class="fa" onclick="voteRatings(this.id)">&#xf006;</span>
+                                    </div>
+                                    <div class="item2"><textarea placeholder="Your review..." id="myreviews"></textarea><button class="full" type="button" onclick="updateReview()">Send</button></div>
+                                    <input type="hidden" id="myfoodid"><input type="hidden" id="myrating">
+                                </div>                    
+                </div>
+
+                <div>
+                        <div>5 star</div><div class="stars5"><div class="bar-container"><div class="bar-n-stars">&nbsp;</div></div></div>
+                        <div>4 star</div><div class="stars4"><div class="bar-container"><div class="bar-n-stars">&nbsp;</div></div></div>
+                        <div>3 star</div><div class="stars3"><div class="bar-container"><div class="bar-n-stars">&nbsp;</div></div></div>
+                        <div>2 star</div><div class="stars2"><div class="bar-container"><div class="bar-n-stars">&nbsp;</div></div></div>
+                        <div>1 star</div><div class="stars1"><div class="bar-container"><div class="bar-n-stars">&nbsp;</div></div></div>                
+                        <div><img id="foodimg" src="" width="100%"></div>
+                        
+                </div>
+            </div>
+        </div></div>
+        
+        <input type="hidden" id="cur_date" value="0">
+        <input type="hidden" id="curID" value="0">
+
+        <div class="headlines">           
+            <div><canvas id="myChart">Chart here!</canvas><div id="newOverlay" class="overlay"><div class="text" id="reduce"></div></div></div>
+            <div><img src="libs/img/hero_8.jpg" width="100%" ></div>
+        </div>
+    
+    <div class="login-modal" id="userlog"><div class="login-window" id="account"></div></div>
+    <div class="mycart" id="myshoppingcart"><div id="cartcount" onclick="viewCart()"></div></div>
+    <div id="aboutModal"></div>
+    <div id="cartModal" class="orders-window"><div id="myorder" class="orders-body"></div></div>
+    <div id="main"></div> 
+    
+    <div class="subnavbar" id="footer">
+       <p style="text-align: center; padding: 40px 0 0px 0;">Project Leader: Andy Dang - BIS Class of 2022</p>
+    </div>
+</div>
+
+<script>
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    sessionStorage.clear();
+    sessionStorage.setItem("cart",0);
+    sessionStorage.setItem("orders","");
+    sessionStorage.setItem("userInfo","");
+    sessionStorage.setItem("foodRatings","");
+    
+    var navbar = document.getElementById("nav_bar");                
+    var sticky = navbar.offsetTop;
+    window.onscroll = function() {navFunction()};
+
+    $( window ).on("load", function() {
+        makeChart("myChart");
+        myObj = getMenuList();
+        Fullmenu = list(myObj,"Rice",0) + list(myObj,"Stir_Noodle",0)+list(myObj,"Noodle",0)+list(myObj,"Salad",0);
+        myCal = myCalendar(0,1);
+        
+        html = ''; 
+        html = html + '<div class="main-body"><div id="mycal">' + myCal +'</div><div id="fullmenu"><div class="navbar" id="bycate"><div class="grid-nav">';
+        html = html + '<cell><a class="act" href="#" onClick="loadmenu()" id="iHome" >Full Menu</a> </cell>';
+        html = html + '<cell><a href="#" onClick="showMeup(`Rice`,`iRice`)" id="iRice">Rice</a> </cell>';
+        html = html + '<cell><a href="#" onClick="showMeup(`Stir_Noodle`,`iStir_Noodle`)" id="iStir_Noodle">Stirred Noodle</a> </cell>';
+        html = html + '<cell><a href="#" onClick="showMeup(`Noodle`,`iNoodle`)" id="iNoodle">Noodle</a> </cell>';
+        html = html + '<cell><a href="#" onClick="showMeup(`Salad`,`iSalad`)" id="iSalad">Salad</a> </cell></div></div>';
+        
+        html = html +  Fullmenu + "</div></div>" ;
+        ihtml = html;
+        document.getElementById("main").innerHTML = html;
+        $('#account').load('header.html #loginform');
+        ratingUpdate();
+    });
+    setInterval(slidesChange, 3000);
+    
+    function slidesChange() {        
+        x = document.getElementById("newOverlay");
+        iClass = x.className;
+        if (iClass=="overlay") { x.classList.add("overlay1"); } else {x.classList.remove("overlay1");}
+    }
+    
+</script>
+        
+</body>
+<script src="libs/main.js"></script>
+<script src="libs/main2.js"></script>
+</html>
